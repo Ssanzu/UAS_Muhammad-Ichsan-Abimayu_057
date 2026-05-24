@@ -31,12 +31,6 @@ class Hotel {
     public function setStars(int $stars): void                { $this->stars = $stars; }
 
     // ─── Methods ─────────────────────────────────────────────────────────
-
-    /**
-     * getAllHotels(): mengembalikan array objek Hotel dari data statis.
-     * Digunakan oleh home.php dan booking.php.
-     * @return Hotel[]
-     */
     public static function getAllHotels(): array {
         return [
             new Hotel(1, 'Zogart Hotel - Zimbabwe, Harare',       'img/hotel 1.jpg', 128000, 3),
@@ -46,9 +40,7 @@ class Hotel {
         ];
     }
 
-    /**
-     * getHotelById(): mengembalikan objek Hotel berdasarkan ID, atau null jika tidak ada.
-     */
+    
     public static function getHotelById(int $id): ?Hotel {
         foreach (self::getAllHotels() as $hotel) {
             if ($hotel->getId() === $id) return $hotel;
@@ -56,16 +48,12 @@ class Hotel {
         return null;
     }
 
-    /**
-     * formatPrice(): mengembalikan harga dalam format rupiah (Rp 128.000/pax).
-     */
+   
     public function formatPrice(): string {
         return 'Rp ' . number_format($this->pricePerNight, 0, ',', '.') . '/pax';
     }
 
-    /**
-     * renderStars(): mengembalikan HTML bintang (filled/outline) sesuai rating.
-     */
+    
     public function renderStars(): string {
         $html = '';
         for ($i = 1; $i <= 5; $i++) {
